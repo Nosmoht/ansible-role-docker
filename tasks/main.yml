@@ -1,0 +1,12 @@
+---
+- name: Install docker
+  yum:
+    name: '{{ item }}'
+    state: '{{ docker_package_state }}'
+  with_items: docker_packager
+
+- name: Ensure that service is running and configured to start on system boot
+  service:
+    name: '{{ docker_service_name }}'
+    state: running
+    enabled: true
