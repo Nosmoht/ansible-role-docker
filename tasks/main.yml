@@ -1,11 +1,13 @@
 ---
 - name: Install docker
+  sudo: yes
   yum:
     name: '{{ item }}'
     state: '{{ docker_package_state }}'
-  with_items: docker_packager
+  with_items: docker_packages
 
 - name: Ensure that service is running and configured to start on system boot
+  sudo: yes
   service:
     name: '{{ docker_service_name }}'
     state: running
