@@ -1,39 +1,43 @@
 Role Name
 =========
 
-A brief description of the role goes here.
+Ansible role to install and configure Docker on RHEL based systems.
 
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+Ansible.
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+| Name | Description | Value |
+| :------ | :-------------- | :------ |
+| docker_data_dir | Specify the directory Docker will use | /var/lib/docker |
+| docker_package_state | State of Docker package | installed |
+| docker_packages | List of Packages to install Docker | Depends on {ansible_distribution_major} RHEL6=docker-io, RHEL7=docker
+| docker_service_name | Name of Docker service used by SysV/Systemd | docker |
+| docker_service_state | State of Docker service | running |
+| docker_service_enabled | Should Docker service start on boot | true |
 
 Dependencies
 ------------
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+None
 
 Example Playbook
 ----------------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
-
-    - hosts: servers
+    - hosts: docker-servers
       roles:
-         - { role: username.rolename, x: 42 }
+         - { role: docker }
 
 License
 -------
 
-BSD
+
 
 Author Information
 ------------------
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
-# ansible-role-docker
+email: ntbc@gmx.net
