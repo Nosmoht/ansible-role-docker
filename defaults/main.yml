@@ -1,6 +1,6 @@
 ---
-docker_packages:
-- docker
 docker_package_state: installed
 docker_service_name: docker
+docker_service_state: running
+docker_service_enabled: true
 docker_data_dir: /var/lib/docker
