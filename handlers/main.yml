@@ -1,2 +1,18 @@
 ---
-# handlers file for docker
+- name: Start Docker
+  sudo: true
+  service:
+    name: '{{ docker_service_name }}'
+    state: started
+
+- name: Restart Docker
+  sudo: true
+  service:
+    name: '{{ docker_service_name }}'
+    state: restarted
+
+- name: Stop Docker
+  sudo: true
+  service:
+    name: '{{ docker_service_name }}'
+    state: stopped
