@@ -1,14 +1,16 @@
 ---
+- include_vars: '{{ ansible_os_family }}{{ansible_distribution_major_version }}.{{ansible_architecture }}.yml'
+
 - name: Install docker
-  sudo: yes
+  sudo: true
   yum:
     name: '{{ item }}'
     state: '{{ docker_package_state }}'
   with_items: docker_packages
 
 - name: Ensure that service is running and configured to start on system boot
-  sudo: yes
+  sudo: true
   service:
     name: '{{ docker_service_name }}'
-    state: running
-    enabled: true
+    state: '{{ docker_service_state }}'
+    enabled: '{{ docker_service_enabled }}'
