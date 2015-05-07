@@ -6,7 +6,7 @@
   yum:
     name: '{{ item }}'
     state: '{{ docker_package_state }}'
-    enablerepo: '{{ docker_packages_repo | default(None) }}'
+    enablerepo: '{{ docker_packages_repo | default(omit) }}'
   with_items: docker_packages
 
 - name: Ensure that service is running and configured to start on system boot
