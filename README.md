@@ -3,13 +3,11 @@ Role Name
 
 Ansible role to install and configure Docker on RHEL based systems.
 
-Requirements
-------------
+# Requirements
 
-Ansible.
+If using CentOS 6 [EPEL] repository must be available.
 
-Role Variables
---------------
+# Role Variables
 
 | Name | Description | Value |
 | :------ | :-------------- | :------ |
@@ -20,24 +18,24 @@ Role Variables
 | docker_service_state | State of Docker service | running |
 | docker_service_enabled | Should Docker service start on boot | true |
 
-Dependencies
-------------
+# Dependencies
 
 None
 
-Example Playbook
-----------------
+# Example Playbook
+```yaml
+- hosts: docker-servers
+  roles:
+  - role: docker
+```
 
-    - hosts: docker-servers
-      roles:
-         - { role: docker }
+# License
 
-License
--------
+BSD
 
+# Author Information
 
+[Thomas Krahn]
 
-Author Information
-------------------
-
-email: ntbc@gmx.net
+[EPEL]: https://fedoraproject.org/wiki/EPEL
+[Thomas Krahn]: mailto:ntbc@gmx.net
