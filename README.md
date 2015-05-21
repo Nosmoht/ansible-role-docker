@@ -1,7 +1,14 @@
-Role Name
+ansible-role-docker
 =========
 
-Ansible role to install and configure Docker on RHEL based systems.
+# Table of Contents
+
+- [Description](#description)
+- [Requirements](#requirements)
+- [Role variables](#role variables)
+- [Examples](#examples)
+
+Ansible role to install and configure Docker Daemon on RHEL based systems.
 
 # Requirements
 
@@ -22,7 +29,7 @@ If using CentOS 6 [EPEL] repository must be available.
 
 None
 
-# Example Playbook
+# Examples
 ```yaml
 - hosts: docker-servers
   roles:
