@@ -1,0 +1,8 @@
+---
+- name: Ensure DOCKER_OPTS
+  lineinfile:
+    dest: '{{ docker_config_file }}'
+    regexp: '^DOCKER_OPTS=.*'
+    line: 'DOCKER_OPTS="{{ docker_opts }}"'
+  when: docker_opts is defined
+  notify: Restart Docker

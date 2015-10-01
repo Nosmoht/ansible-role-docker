@@ -1,0 +1,7 @@
+---
+- name: Ensure service
+  sudo: true
+  service:
+    name: '{{ docker_service_name }}'
+    state: '{{ docker_service_state }}'
+    enabled: '{{ docker_service_enabled }}'

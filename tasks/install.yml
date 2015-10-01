@@ -1,0 +1,8 @@
+---
+- name: Ensure package
+  sudo: true
+  yum:
+    name: '{{ item }}'
+    state: '{{ docker_package_state }}'
+    enablerepo: '{{ docker_packages_repo | default(omit) }}'
+  with_items: docker_packages
