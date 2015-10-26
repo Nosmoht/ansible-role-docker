@@ -19,11 +19,13 @@ If using CentOS 6 [EPEL] repository must be available.
 | Name | Description | Value |
 | :------ | :-------------- | :------ |
 | docker_data_dir | Specify the directory Docker will use | /var/lib/docker |
+| docker_package_name | Package name | docker-engine |
 | docker_package_state | State of Docker package | installed |
-| docker_packages | List of Packages to install Docker | Depends on {ansible_distribution_major} RHEL6=docker-io, RHEL7=docker
 | docker_service_name | Name of Docker service used by SysV/Systemd | docker |
 | docker_service_state | State of Docker service | running |
 | docker_service_enabled | Should Docker service start on boot | true |
+| docker_yum_repo_url | URL of Docker's yum repo | https://yum.dockerproject.org/repo/main/centos/{{ ansible_distribution_major_version }} |
+| docker_yum_repo_template_file | Name of template to use for repo | docker.repo.j2 |
 
 # Dependencies
 
@@ -32,6 +34,9 @@ None
 # Examples
 ```yaml
 - hosts: docker-servers
+  become: true
+  become_method: sudo
+  become_user: root
   roles:
   - role: docker
 ```
@@ -42,7 +47,4 @@ BSD
 
 # Author Information
 
-[Thomas Krahn]
-
-[EPEL]: https://fedoraproject.org/wiki/EPEL
-[Thomas Krahn]: mailto:ntbc@gmx.net
+[Thomas Krahn](mailto:ntbc@gmx.net)
