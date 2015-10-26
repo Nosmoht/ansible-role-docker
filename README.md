@@ -9,6 +9,8 @@ ansible-role-docker
 - [Examples](#examples)
 
 Ansible role to install and configure Docker Daemon on RHEL based systems.
+A yum repo file will be created in /etc/yum.repos.d which uses the official
+Docker yum repository to install docker.
 
 # Requirements
 
