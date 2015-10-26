@@ -1,0 +1,8 @@
+---
+- name: Ensure configuration
+  template:
+    src: docker.j2
+    dest: '{{ docker_config_file }}'
+    owner: root
+    group: root
+    mode: '0644'

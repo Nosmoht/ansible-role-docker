@@ -1,7 +1,14 @@
 ---
+- name: Ensure repository
+  template:
+    src: docker.repo.j2
+    dest: /etc/yum.repos.d/docker.repo
+    owner: root
+    group: root
+    mode: '0644'
+
 - name: Ensure package
   yum:
-    name: '{{ item }}'
+    name: '{{ docker_package_name }}'
     state: '{{ docker_package_state }}'
     enablerepo: '{{ docker_packages_repo | default(omit) }}'
-  with_items: docker_packages
