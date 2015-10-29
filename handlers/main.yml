@@ -5,6 +5,11 @@
     name: '{{ docker_service_name }}'
     state: started
 
+- name: Systemd daemon-reload
+  sudo: true
+  command: /bin/systemctl daemon-reload
+  when: ansible_distribution_major_version|int == 7
+
 - name: Restart Docker
   sudo: true
   service:
