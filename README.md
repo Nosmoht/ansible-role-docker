@@ -28,6 +28,10 @@ If using CentOS 6 [EPEL] repository must be available.
 | docker_service_enabled | Should Docker service start on boot | true |
 | docker_yum_repo_url | URL of Docker's yum repo | https://yum.dockerproject.org/repo/main/centos/{{ ansible_distribution_major_version }} |
 | docker_yum_repo_template_file | Name of template to use for repo | docker.repo.j2 |
+| docker_dropin_template_file | Name of template to use for dropin config (7.x only) | docker.dropin.j2 |
+| docker_config_path | Path to config file (7.x only) | /etc/systemd/system/docker.service.d |
+| docker_config_file | Additional docker config (7.x only) | {{ docker_config_path }}/overrideexec.conf
+| docker_options | Options to add to docker deamon (7.x only) | /etc/systemd/system/docker.service.d |
 
 # Dependencies
 
