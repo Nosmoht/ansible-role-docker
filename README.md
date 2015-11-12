@@ -12,9 +12,11 @@ Ansible role to install and configure Docker Daemon on RHEL based systems.
 A yum repo file will be created in /etc/yum.repos.d which uses the official
 Docker yum repository to install docker.
 
+NOTE: The configuration part is only implemented for RHEL / CentOS 7. If needed, please add the configuration.
+
 # Requirements
 
-If using CentOS 6 [EPEL] repository must be available.
+If using CentOS 6 [EPEL] repository must be available. NOTE: This role is preconfigured to run in CentOS 7.
 
 # Role Variables
 
@@ -31,7 +33,7 @@ If using CentOS 6 [EPEL] repository must be available.
 | docker_dropin_template_file | Name of template to use for dropin config (7.x only) | docker.dropin.j2 |
 | docker_config_path | Path to config file (7.x only) | /etc/systemd/system/docker.service.d |
 | docker_config_file | Additional docker config (7.x only) | {{ docker_config_path }}/overrideexec.conf
-| docker_options | Options to add to docker deamon (7.x only) | /etc/systemd/system/docker.service.d |
+| docker_options | Options to add to docker deamon (7.x only) | --insecure-registry 10.0.0.0/8 --exec-opt native.cgroupdriver=cgroupfs |
 
 # Dependencies
 

@@ -6,7 +6,7 @@ docker_service_state: running
 docker_service_enabled: true
 docker_data_dir: /var/lib/docker
 docker_yum_repo_url: https://yum.dockerproject.org/repo/main/centos/{{ ansible_distribution_major_version }}
-docker_options: --storage-driver btrfs --insecure-registry 10.0.0.0/8 --exec-opt native.cgroupdriver=cgroupfs
+docker_options: --insecure-registry 10.0.0.0/8 --exec-opt native.cgroupdriver=cgroupfs
 docker_yum_repo_template_file: docker.repo.j2
 docker_dropin_template_file: docker.dropin.j2
 docker_config_path: /etc/systemd/system/docker.service.d
