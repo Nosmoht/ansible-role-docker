@@ -1,6 +1,5 @@
 ---
 - name: Ensure service
-  sudo: true
   service:
     name: '{{ docker_service_name }}'
     state: '{{ docker_service_state }}'
