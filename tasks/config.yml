@@ -7,7 +7,7 @@
     group: root
   when: ansible_distribution_major_version|int == 7
 
-- name: Ensure configuration
+- name: Ensure configuration RHEL7
   template:
     src: '{{ docker_dropin_template_file }}'
     dest: '{{ docker_config_file }}'
@@ -17,4 +17,15 @@
   when: ansible_distribution_major_version|int == 7
   notify:
     - Systemd daemon-reload
+    - Restart Docker
+
+- name: Ensure configuration
+  template:
+    src: '{{ docker_dropin_template_file }}'
+    dest: '{{ docker_config_file }}'
+    owner: root
+    group: root
+    mode: '0644'
+  when: ansible_distribution_major_version|int == 6
+  notify:
     - Restart Docker
