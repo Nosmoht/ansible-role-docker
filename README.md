@@ -28,8 +28,8 @@ If using CentOS 6 [EPEL] repository must be available. NOTE: This role is precon
 | docker_service_name | Name of Docker service used by SysV/Systemd | docker |
 | docker_service_state | State of Docker service | running |
 | docker_service_enabled | Should Docker service start on boot | true |
-| docker_yum_repo_url | URL of Docker's yum repo | https://yum.dockerproject.org/repo/main/centos/{{ ansible_distribution_major_version }} |
-| docker_yum_repo_template_file | Name of template to use for repo | docker.repo.j2 |
+| docker_repository_url | URL of Docker's yum repo | https://yum.dockerproject.org/repo/main/centos/{{ ansible_distribution_major_version }} |
+| docker_repository_template_file | Name of template to use for repo | docker.repo.j2 |
 | docker_dropin_template_file | Name of template to use for dropin config (7.x only) | docker.dropin.j2 |
 | docker_config_path | Path to config file (7.x only) | /etc/systemd/system/docker.service.d |
 | docker_config_file | Additional docker config (7.x only) | {{ docker_config_path }}/overrideexec.conf

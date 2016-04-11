@@ -1,7 +1,7 @@
 ---
 - name: Ensure repository
   template:
-    src: '{{ docker_yum_repo_template_file }}'
+    src: '{{ docker_repository_template_file }}'
     dest: /etc/yum.repos.d/docker.repo
     owner: root
     group: root

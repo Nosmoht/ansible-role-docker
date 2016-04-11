@@ -1,5 +1,5 @@
 ---
 docker_config_path: /etc/systemd/system/docker.service.d
 docker_config_file: '{{ docker_config_path }}/overrideexec.conf'
-docker_yum_repo_url: https://yum.dockerproject.org/repo/main/centos/{{ ansible_distribution_major_version }}
-docker_yum_repo_template_file: docker.repo.j2
+docker_repository_url: https://yum.dockerproject.org/repo/main/centos/{{ ansible_distribution_major_version }}
+docker_repository_template_file: docker.repo.j2
