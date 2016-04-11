@@ -1,5 +1,13 @@
 ---
 #- include_vars: '{{ ansible_distribution }}{{ansible_distribution_major_version }}.{{ansible_architecture }}.yml'
 - include: install.yml
+  tags: docker_install
+
 - include: config.yml
+  tags: docker_config
+
 - include: service.yml
+  tags: docker_service
+
+- meta: flush_handlers
+  when: '{{ docker_flush_handlers }}'

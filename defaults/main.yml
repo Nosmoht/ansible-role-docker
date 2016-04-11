@@ -11,3 +11,4 @@ docker_yum_repo_template_file: docker.repo.j2
 docker_dropin_template_file: docker.dropin.j2
 docker_config_path: /etc/systemd/system/docker.service.d
 docker_config_file: '{{ docker_config_path }}/overrideexec.conf'
+docker_flush_handlers: false
