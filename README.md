@@ -17,7 +17,8 @@ Supported operating systems:
 
 # Requirements
 
-If using CentOS 6 [EPEL] repository must be available.
+- Ansible >= 2.0
+- If using CentOS 6 [EPEL] repository must be available.
 
 # Role Variables
 
