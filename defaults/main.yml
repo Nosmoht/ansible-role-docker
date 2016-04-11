@@ -5,6 +5,8 @@ docker_service_name: docker
 docker_service_state: running
 docker_service_enabled: true
 docker_data_dir: /var/lib/docker
-docker_options: --insecure-registry 10.0.0.0/8 --exec-opt native.cgroupdriver=cgroupfs
+docker_insecure_registry: 10.0.0.0/8
+docker_cgroupdriver: cgroupfs
+docker_options: --insecure-registry {{ docker_insecure_registry }} --exec-opt native.cgroupdriver={{ docker_cgroupdriver }}
 docker_dropin_template_file: docker.dropin.j2
 docker_flush_handlers: false
