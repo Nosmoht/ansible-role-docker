@@ -1,0 +1,10 @@
+---
+docker_config_path: /etc/default
+docker_config_file: '{{ docker_config_path }}/docker'
+docker_config_template_file: docker.upstart.j2
+docker_repository_url: https://apt.dockerproject.org/repo ubuntu-{{ ansible_distribution_release }} main
+docker_repository_path: /etc/apt/sources.list.d
+docker_repository_file: docker.list
+docker_repository_template_file: docker.list.j2
+docker_repository_key_server: hkp://p80.pool.sks-keyservers.net:80
+docker_repository_key_id: 58118E89F3A912897C070ADBF76221572C52609D
