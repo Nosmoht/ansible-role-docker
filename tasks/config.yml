@@ -5,27 +5,14 @@
     state: directory
     owner: root
     group: root
-  when: ansible_distribution_major_version|int == 7
-
-- name: Ensure configuration RHEL7
-  template:
-    src: '{{ docker_dropin_template_file }}'
-    dest: '{{ docker_config_file }}'
-    owner: root
-    group: root
-    mode: '0644'
-  when: ansible_distribution_major_version|int == 7
-  notify:
-  - reload systemd daemon
-  - restart docker
 
 - name: Ensure configuration
   template:
-    src: '{{ docker_dropin_template_file }}'
+    src: '{{ docker_config_template_file }}'
     dest: '{{ docker_config_file }}'
     owner: root
     group: root
     mode: '0644'
-  when: ansible_distribution_major_version|int == 6
   notify:
-  - restart Docker
+  - reload systemd daemon
+  - restart docker

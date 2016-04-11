@@ -2,13 +2,23 @@
 - name: Ensure repository
   template:
     src: '{{ docker_repository_template_file }}'
-    dest: /etc/yum.repos.d/docker.repo
+    dest: '{{ docker_repository_path }}/{{ docker_repository_file }}'
     owner: root
     group: root
     mode: '0644'
 
+- name: Ensure repository key (Debian only)
+  apt_key:
+    keyserver: '{{ docker_repository_key_server }}'
+    id: '{{ docker_repository_key_id }}'
+  when: '"{{ ansible_os_family }}" == "Debian"'
+
+- name: Update package manager cache (Debian only)
+  apt:
+    update_cache: yes
+  when: '"{{ ansible_os_family }}" == "Debian"'
+
 - name: Ensure package
-  yum:
+  package:
     name: '{{ docker_package_name }}'
     state: '{{ docker_package_state }}'
-    enablerepo: '{{ docker_packages_repo | default(omit) }}'
