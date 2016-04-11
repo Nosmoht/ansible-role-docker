@@ -1,5 +1,5 @@
 ---
-- name: Creates directory
+- name: Ensure directory
   file:
     path: '{{ docker_config_path }}'
     state: directory
@@ -16,8 +16,8 @@
     mode: '0644'
   when: ansible_distribution_major_version|int == 7
   notify:
-    - Systemd daemon-reload
-    - Restart Docker
+  - reload systemd daemon
+  - restart docker
 
 - name: Ensure configuration
   template:
@@ -28,4 +28,4 @@
     mode: '0644'
   when: ansible_distribution_major_version|int == 6
   notify:
-    - Restart Docker
+  - restart Docker

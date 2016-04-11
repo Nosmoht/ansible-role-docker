@@ -1,23 +1,14 @@
 ---
-- name: Start Docker
-  sudo: true
-  service:
-    name: '{{ docker_service_name }}'
-    state: started
-
-- name: Systemd daemon-reload
-  sudo: true
+- name: reload systemd daemon
   command: /bin/systemctl daemon-reload
   when: ansible_distribution_major_version|int == 7
 
-- name: Restart Docker
-  sudo: true
+- name: restart docker
   service:
     name: '{{ docker_service_name }}'
     state: restarted
 
-- name: Stop Docker
-  sudo: true
+- name: stop docker
   service:
     name: '{{ docker_service_name }}'
     state: stopped
